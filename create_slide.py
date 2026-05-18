@@ -2,6 +2,7 @@ from pptx import Presentation
 from pptx.util import Inches, Pt
 from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
 from pptx.dml.color import RGBColor
+import random
 
 # Create presentation
 prs = Presentation()
@@ -19,7 +20,42 @@ fill.solid()
 fill.fore_color.rgb = RGBColor(255, 255, 255)
 
 # ===== WORD CLOUD SECTION (Top 60-70%) =====
-# Add word cloud text box (occupies top portion)
+# Define word cloud data with frequency weights (determines font size)
+word_data = [
+    ("PowerPoint", 50),
+    ("Adobe", 45),
+    ("Create", 48),
+    ("Presenter", 42),
+    ("Picture", 40),
+    ("bulleted", 38),
+    ("Content", 39),
+    ("List", 37),
+    ("Use", 36),
+    ("Text", 35),
+    ("Bullet", 34),
+    ("Categories", 33),
+    ("Single", 32),
+    ("Learn", 31),
+    ("Within", 44),
+    ("Slides", 30),
+    ("Add", 29),
+    ("Quizzes", 28),
+    ("Numbered", 27),
+    ("Import", 26),
+    ("Objects", 25),
+    ("Custom", 24),
+    ("Shape", 23),
+    ("Arrange", 22),
+    ("Format", 21),
+    ("Question", 20),
+    ("Using", 19),
+    ("Insert", 18),
+    ("New", 17),
+    ("Read", 16),
+    ("Options", 15),
+]
+
+# Create word cloud text box
 word_cloud_left = Inches(0.5)
 word_cloud_top = Inches(0.5)
 word_cloud_width = Inches(9)
@@ -30,14 +66,31 @@ word_cloud_frame = word_cloud_box.text_frame
 word_cloud_frame.word_wrap = True
 word_cloud_frame.vertical_anchor = MSO_ANCHOR.MIDDLE
 
-# Add editable word cloud text
-word_cloud_text = word_cloud_frame.paragraphs[0]
-word_cloud_text.text = "Digital Transformation  Cloud Migration  Data Analytics  Customer Experience  Automation  Scalability  Integration  Security  AI Innovation  Efficiency  Agility"
-word_cloud_text.alignment = PP_ALIGN.CENTER
-word_cloud_text.font.size = Pt(28)
-word_cloud_text.font.bold = True
-word_cloud_text.font.color.rgb = RGBColor(40, 60, 80)  # Dark slate blue
-word_cloud_text.font.name = 'Segoe UI'
+# Normalize font sizes (20pt to 56pt range)
+max_freq = max([freq for _, freq in word_data])
+min_freq = min([freq for _, freq in in word_data])
+
+# Add words with varying font sizes
+for i, (word, frequency) in enumerate(word_data):
+    # Calculate font size based on frequency
+    font_size = 20 + (frequency - min_freq) / (max_freq - min_freq) * 36
+    font_size = int(font_size)
+    
+    if i == 0:
+        # First word - add to existing paragraph
+        p = word_cloud_frame.paragraphs[0]
+    else:
+        # Add new paragraph for each word
+        p = word_cloud_frame.add_paragraph()
+    
+    p.text = word
+    p.alignment = PP_ALIGN.CENTER
+    p.font.size = Pt(font_size)
+    p.font.bold = (frequency > 40)  # Make high-frequency words bold
+    p.font.color.rgb = RGBColor(40, 60, 80)  # Dark slate blue
+    p.font.name = 'Segoe UI'
+    p.space_before = Pt(2)
+    p.space_after = Pt(2)
 
 # Add subtle border to word cloud section
 word_cloud_box.line.color.rgb = RGBColor(220, 220, 220)
@@ -49,7 +102,6 @@ word_cloud_box.fill.background()
 left_col_left = Inches(0.5)
 left_col_top = Inches(4.7)
 left_col_width = Inches(4.4)
-left_col_height = Inches(2.5)
 
 # Left column heading
 left_heading_box = slide.shapes.add_textbox(left_col_left, left_col_top, left_col_width, Inches(0.4))
@@ -81,7 +133,6 @@ left_content_box.fill.background()
 right_col_left = Inches(5.1)
 right_col_top = Inches(4.7)
 right_col_width = Inches(4.4)
-right_col_height = Inches(2.5)
 
 # Right column heading
 right_heading_box = slide.shapes.add_textbox(right_col_left, right_col_top, right_col_width, Inches(0.4))
@@ -113,7 +164,8 @@ right_content_box.fill.background()
 prs.save('Business_Needs_Slide.pptx')
 print("✓ PowerPoint slide created successfully: Business_Needs_Slide.pptx")
 print("\nSlide Features:")
-print("• Word cloud (60-70% top section) - fully editable text")
+print("• Word cloud (60-70% top section) - fully editable with varying font sizes")
+print("• Words sized by frequency (matching reference image style)")
 print("• Two-column layout (bottom 30%)")
 print("  - Left: Business Needs")
 print("  - Right: Pain Points")
