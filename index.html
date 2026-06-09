@@ -187,15 +187,6 @@ ul.bul li strong{color:var(--charcoal);font-weight:600}
 .cert-foot{display:flex;justify-content:space-between;align-items:center;margin-top:4px}
 .cert-date{font-size:11px;color:var(--muted2)}
 
-/* ── EXTRA ── */
-.extra-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
-.extra-card{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--sage);border-radius:var(--r);padding:20px 22px;transition:all .25s;backdrop-filter:blur(8px)}
-.extra-card:hover{border-color:rgba(107,124,106,.3);transform:translateY(-2px)}
-.extra-icon{font-size:24px;margin-bottom:9px}
-.extra-title{font-size:14.5px;font-weight:700;color:var(--charcoal);margin-bottom:3px}
-.extra-org{font-size:12px;color:var(--sage);font-weight:500;margin-bottom:7px}
-.extra-desc{font-size:13px;color:var(--brown);line-height:1.65}
-
 /* ── AWARDS ── */
 .aw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
 .aw-card{background:var(--gold-lt);border:1px solid rgba(196,154,60,.25);border-radius:var(--r);padding:20px;transition:all .25s}
@@ -609,22 +600,6 @@ aside {position:sticky;top:80px;display:flex;flex-direction:column;gap:18px}
   </div>
 </section>
 
-<!-- EXTRA-CURRICULAR -->
-<section id="extra" class="sec sec-alt">
-  <div class="container">
-    <div class="reveal" style="margin-bottom:40px">
-      <div class="sec-label">Leadership</div>
-      <h2 class="sec-title">Leadership <em>and Volunteering</em></h2>
-    </div>
-    <div class="extra-grid reveal">
-      <div class="extra-card"><div class="extra-icon">🌱</div><div class="extra-title">Volunteer Teacher</div><div class="extra-org">Surya Foundation, New Delhi, 6 Years</div><div class="extra-desc">Dedicated 6 years to teaching underprivileged students who could not afford tuition fees, providing free education, study materials, and mentorship that opened doors for hundreds of children.</div></div>
-      <div class="extra-card"><div class="extra-icon">💃</div><div class="extra-title">Kathak Dance, First Division with Distinction</div><div class="extra-org">Pracheen Kala Kendra, Chandigarh</div><div class="extra-desc">Completed Prarambhik Part I certification in Kathak Dance, awarded First Division with Distinction by Pracheen Kala Kendra, recognised by State Govts., Universities, and Education Boards.</div></div>
-      <div class="extra-card"><div class="extra-icon">🤝</div><div class="extra-title">Industry Outreach Lead, Placement Cell</div><div class="extra-org">ICFAI Business School, Hyderabad</div><div class="extra-desc">Coordinated industry outreach initiatives, fostering relationships with key recruiters and facilitating placement opportunities for students of ICFAI Business School.</div></div>
-      <div class="extra-card"><div class="extra-icon">🏆</div><div class="extra-title">Member, Maffick Dance Society</div><div class="extra-org">Delhi University</div><div class="extra-desc">Active member of Maffick Dance Society at Delhi University, winning numerous inter-college dance competitions representing the university.</div></div>
-    </div>
-  </div>
-</section>
-
 <!-- AWARDS -->
 <section id="awards" class="sec">
   <div class="container">
@@ -716,7 +691,129 @@ document.addEventListener('keydown', function(e) {
 
 </script>
 
-<div id="ha-panel" class="cs-panel"><div class="panel-topbar"><button class="panel-back" onclick="closePanel('ha-panel')"><svg viewBox="0 0 24 24"><path d="M19 11H7.83l4.88-4.88c.39-.39.39-1.03 0-1.42-.39-.39-1.02-.39-1.41 0l-6.59 6.59c-.39.39-.39 1.02 0 1.41l6.59 6.59c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L7.83 13H19c.55 0 1-.45 1-1s-.45-1-1-1z"/></svg>Back to portfolio</button><span style="font-family:var(--disp);font-size:16px;color:var(--charcoal)">Shagun<span style="color:var(--terracotta)">.</span></span><button class="panel-close" onclick="closePanel('ha-panel')">Close ✕</button></div><section id="ha-hero">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hawaiian Airlines · Shagun Sharma</title>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Google+Sans+Display:wght@400;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{ --cream:#f7f3ee;--cream2:#f0e9df;--cream3:#e8ddd0;--sand:#d4c4b0; --terracotta:#b5623a;--terra-lt:#c97a52;--terra-pale:#f0e0d4; --charcoal:#1e1b18;--charcoal2:#2e2a26;--brown:#5c4a38; --muted:#8a7a6a;--muted2:#a89888;--sage:#6b7c6a;--sage-lt:#d4ddd3; --gold:#c49a3c;--gold-lt:#f5e8c8; --border:rgba(90,70,50,0.12);--border2:rgba(90,70,50,0.07); --card:rgba(255,255,255,0.7);--card-hover:rgba(255,255,255,0.95); --r:14px;--font:'Google Sans','Segoe UI',system-ui,sans-serif; --disp:'DM Serif Display','Georgia',serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--cream);color:var(--charcoal);line-height:1.6;overflow-x:hidden}
+a{color:var(--terracotta);text-decoration:none}
+a:hover{text-decoration:underline}
+::selection{background:rgba(181,98,58,.18)} body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.025; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")}
+.container{max-width:860px;margin:0 auto;padding:0 28px}
+.container-wide{max-width:1080px;margin:0 auto;padding:0 28px}
+.sec{padding:72px 0}
+.sec-alt{background:var(--cream2)}
+.sec-label{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--terracotta);margin-bottom:10px}
+.sec-title{font-family:var(--disp);font-size:clamp(28px,4vw,44px);color:var(--charcoal);line-height:1.1;margin-bottom:14px;font-weight:400}
+.sec-title em{font-style:italic;color:var(--terracotta)}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:26px;transition:all .25s;backdrop-filter:blur(8px)}
+.card:hover{background:var(--card-hover);border-color:rgba(181,98,58,.22);box-shadow:0 8px 32px rgba(90,60,30,.08)}
+.badge{display:inline-flex;align-items:center;gap:6px;background:var(--terra-pale);border:1px solid rgba(181,98,58,.25);color:var(--terracotta);padding:4px 12px;border-radius:99px;font-size:11.5px;font-weight:500;letter-spacing:.04em}
+.badge.sage{background:var(--sage-lt);border-color:rgba(107,124,106,.3);color:var(--sage)}
+.badge.gold{background:var(--gold-lt);border-color:rgba(196,154,60,.3);color:var(--gold)}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:58px;display:flex;align-items:center; background:rgba(247,243,238,.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:all .3s}
+nav.scrolled{background:rgba(247,243,238,.97);box-shadow:0 2px 20px rgba(90,60,30,.06)}
+.nav-in{display:flex;justify-content:space-between;align-items:center;width:100%}
+.nav-logo{font-family:var(--disp);font-size:18px;color:var(--charcoal);letter-spacing:-.01em}
+.nav-logo span{color:var(--terracotta)}
+.nav-back{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--muted);font-weight:500;transition:color .2s}
+.nav-back:hover{color:var(--terracotta);text-decoration:none}
+.nav-back svg{width:14px;height:14px;fill:currentColor}
+.nav-tag{font-size:12px;color:var(--muted2);border:1px solid var(--border);padding:4px 10px;border-radius:6px}
+#hero{min-height:72vh;display:flex;align-items:flex-end;padding:96px 0 64px;position:relative;overflow:hidden;background:var(--charcoal)}
+.hero-texture{position:absolute;inset:0;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='4'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)'/%3E%3C/svg%3E")}
+.hero-blob-l{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(181,98,58,.18) 0%,transparent 70%);top:-80px;left:-100px;filter:blur(60px)}
+.hero-blob-r{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(196,154,60,.12) 0%,transparent 70%);bottom:-60px;right:-60px;filter:blur(60px)}
+.hero-inner{position:relative;z-index:1}
+.hero-eyebrow{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(247,243,238,.1);border:1px solid rgba(247,243,238,.18);color:rgba(247,243,238,.75);padding:4px 12px;border-radius:99px;font-size:11.5px;font-weight:500;letter-spacing:.04em}
+.hero-title{font-family:var(--disp);font-size:clamp(32px,5vw,58px);color:var(--cream);line-height:1.08;letter-spacing:-.02em;margin-bottom:14px;font-weight:400}
+.hero-title em{font-style:italic;color:var(--terra-lt)}
+.hero-sub{font-size:16px;color:rgba(247,243,238,.6);max-width:600px;line-height:1.75;margin-bottom:32px}
+.hero-meta{display:flex;gap:32px;flex-wrap:wrap;padding-top:24px;border-top:1px solid rgba(247,243,238,.1)}
+.hm-item{display:flex;flex-direction:column;gap:3px}
+.hm-label{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(247,243,238,.35)}
+.hm-val{font-size:13.5px;color:rgba(247,243,238,.8);font-weight:500}
+.context-stripe{background:var(--terra-pale);border-top:1px solid rgba(181,98,58,.15);border-bottom:1px solid rgba(181,98,58,.15);padding:20px 0}
+.context-inner{display:flex;gap:48px;flex-wrap:wrap;align-items:center}
+.ctx-item{display:flex;flex-direction:column;gap:2px}
+.ctx-label{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--terracotta)}
+.ctx-val{font-size:13px;color:var(--brown);font-weight:500}
+.cs-section{margin-bottom:52px}
+.cs-num{font-family:var(--disp);font-size:14px;color:var(--terracotta);margin-bottom:4px;font-style:italic}
+.cs-heading{font-family:var(--disp);font-size:clamp(22px,3vw,32px);color:var(--charcoal);line-height:1.15;margin-bottom:18px;font-weight:400}
+.cs-heading em{font-style:italic;color:var(--terracotta)}
+.cs-p{font-size:15px;color:var(--brown);line-height:1.85;margin-bottom:14px}
+.cs-p strong{color:var(--charcoal);font-weight:600}
+.cs-p:last-child{margin-bottom:0}
+.callout{background:var(--terra-pale);border-left:3px solid var(--terracotta);border-radius:0 10px 10px 0;padding:18px 22px;margin:22px 0}
+.callout p{font-size:14px;color:var(--brown);line-height:1.75;margin:0}
+.callout p strong{color:var(--charcoal)}
+.blockquote{border-left:3px solid var(--sand);padding:14px 20px;margin:22px 0;background:var(--cream2);border-radius:0 8px 8px 0}
+.blockquote p{font-size:14px;color:var(--brown);line-height:1.75;font-style:italic;margin:0}
+.blockquote cite{display:block;margin-top:8px;font-size:12px;color:var(--muted);font-style:normal;font-weight:500}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin:22px 0}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:20px;text-align:center}
+.stat-num{font-family:var(--disp);font-size:32px;color:var(--terracotta);line-height:1;font-weight:400}
+.stat-lbl{font-size:12px;color:var(--muted);margin-top:5px;line-height:1.45}
+.four-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+.fg-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px 18px}
+.fg-title{font-size:13px;font-weight:700;color:var(--charcoal);margin-bottom:5px}
+.fg-body{font-size:12.5px;color:var(--muted);line-height:1.6}
+.learnings{display:flex;flex-direction:column;gap:20px;margin-top:16px}
+.learning-item{display:flex;gap:16px;align-items:flex-start}
+.l-num{width:28px;height:28px;border-radius:50%;background:var(--terra-pale);border:1px solid rgba(181,98,58,.25);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--terracotta);flex-shrink:0;margin-top:2px}
+.l-body{flex:1}
+.l-title{font-size:14.5px;font-weight:700;color:var(--charcoal);margin-bottom:4px}
+.l-text{font-size:13.5px;color:var(--brown);line-height:1.7}
+.sec-divider{height:1px;background:var(--border);margin:0}
+footer{background:var(--charcoal);padding:36px 0;margin-top:0}
+.footer-in{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.footer-logo{font-family:var(--disp);font-size:18px;color:var(--cream)}
+.footer-logo span{color:var(--terra-lt)}
+.footer-links{display:flex;gap:20px}
+.footer-links a{font-size:13px;color:rgba(247,243,238,.5);transition:color .2s}
+.footer-links a:hover{color:var(--terra-lt);text-decoration:none}
+.footer-note{font-size:12px;color:rgba(247,243,238,.3);margin-top:12px;text-align:center}
+.page-layout{display:grid;grid-template-columns:1fr 200px;gap:48px;align-items:start;max-width:1080px;margin:0 auto;padding:0 28px}
+.toc{position:sticky;top:80px}
+.toc-label{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted2);margin-bottom:12px}
+.toc-links{display:flex;flex-direction:column;gap:6px}
+.toc-link{font-size:12.5px;color:var(--muted);transition:color .2s;padding:3px 0;border-left:2px solid transparent;padding-left:10px;transition:all .2s}
+.toc-link:hover{color:var(--terracotta);border-left-color:var(--terracotta);text-decoration:none}
+.toc-link.active{color:var(--terracotta);border-left-color:var(--terracotta);font-weight:500}
+@media(max-width:780px){
+  .four-grid{grid-template-columns:1fr}
+  .page-layout{grid-template-columns:1fr}
+  .toc{display:none}
+  .hero-meta{gap:20px}
+  .context-inner{gap:24px}
+  .footer-in{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="container-wide nav-in">
+    <a onclick="goBack()" class="nav-back" style="cursor:pointer">
+      <svg viewBox="0 0 24 24"><path d="M19 11H7.83l4.88-4.88c.39-.39.39-1.03 0-1.42-.39-.39-1.02-.39-1.41 0l-6.59 6.59c-.39.39-.39 1.02 0 1.41l6.59 6.59c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L7.83 13H19c.55 0 1-.45 1-1s-.45-1-1-1z"/></svg>
+      Back to portfolio
+    </a>
+    <div class="nav-logo">Shagun<span>.</span></div>
+    <span class="nav-tag">Consulting Case Study</span>
+  </div>
+</nav>
+
+<section id="hero">
   <div class="hero-texture"></div>
   <div class="hero-blob-l"></div>
   <div class="hero-blob-r"></div>
@@ -746,7 +843,7 @@ document.addEventListener('keydown', function(e) {
   <div class="page-layout">
     <div>
 
-      <div class="cs-section" id="ha-s1">
+      <div class="cs-section" id="s1">
         <div class="cs-num">01</div>
         <h2 class="cs-heading">The Problem Hawaiian Airlines <em>Brought to Deloitte</em></h2>
         <p class="cs-p">Hawaiian Airlines came with two interconnected challenges that were compounding each other. The first was a crew scheduling problem. Flight crews, pilots and flight attendants, were not being scheduled optimally, creating a cascade of operational and financial consequences.</p>
@@ -762,7 +859,7 @@ document.addEventListener('keydown', function(e) {
         </div>
       </div>
 
-      <div class="cs-section" id="ha-s2">
+      <div class="cs-section" id="s2">
         <div class="cs-num">02</div>
         <h2 class="cs-heading">Why Deloitte Was <em>Well-Positioned</em></h2>
         <p class="cs-p">Hawaiian Airlines was already a Deloitte client through NetworkPRO, Deloitte's proprietary asset for airline network planning and optimization. This existing relationship gave us three things a cold engagement never provides: established trust, existing access to Hawaiian's operational data, and credibility from demonstrated prior value.</p>
@@ -772,7 +869,7 @@ document.addEventListener('keydown', function(e) {
         </div>
       </div>
 
-      <div class="cs-section" id="ha-s3">
+      <div class="cs-section" id="s3">
         <div class="cs-num">03</div>
         <h2 class="cs-heading">Crew Efficiency: <em>The Diagnostic</em></h2>
         <p class="cs-p">To build the business case, we first needed to quantify what inefficiency was actually costing Hawaiian. I analyzed crew scheduling data, rosters, flight schedules, union agreements, and historical delay records, to identify and size four core inefficiency buckets.</p>
@@ -787,7 +884,7 @@ document.addEventListener('keydown', function(e) {
         </div>
       </div>
 
-      <div class="cs-section" id="ha-s4">
+      <div class="cs-section" id="s4">
         <div class="cs-num">04</div>
         <h2 class="cs-heading">SOCC Modernization: <em>Four Workstreams</em></h2>
         <p class="cs-p">The SOCC diagnostic was structured across four parallel workstreams, each designed to produce both findings and actionable recommendations.</p>
@@ -802,7 +899,7 @@ document.addEventListener('keydown', function(e) {
         </div>
       </div>
 
-      <div class="cs-section" id="ha-s5">
+      <div class="cs-section" id="s5">
         <div class="cs-num">05</div>
         <h2 class="cs-heading">The Solution We <em>Recommended</em></h2>
         <p class="cs-p">The recommended solution combined three levers that addressed both problems simultaneously.</p>
@@ -814,7 +911,7 @@ document.addEventListener('keydown', function(e) {
         </div>
       </div>
 
-      <div class="cs-section" id="ha-s6">
+      <div class="cs-section" id="s6">
         <div class="cs-num">06</div>
         <h2 class="cs-heading">The Business Case <em>We Built</em></h2>
         <p class="cs-p">The ROI model quantified projected savings across four levers against a clear cost structure, producing both a payback period and a 5-year NPV. The model had to be conservative enough to be credible and compelling enough to justify the investment.</p>
@@ -827,7 +924,7 @@ document.addEventListener('keydown', function(e) {
         <p class="cs-p">Against these savings, we sized the investment required: software licensing, implementation services, change management, and training. The model showed a payback period well within Hawaiian's planning horizon and a compelling 5-year NPV, enough to make the decision straightforward for a financially disciplined leadership team.</p>
       </div>
 
-      <div class="cs-section" id="ha-s7">
+      <div class="cs-section" id="s7">
         <div class="cs-num">07</div>
         <h2 class="cs-heading"><em>Outcome</em></h2>
         <div class="stat-grid">
@@ -838,7 +935,7 @@ document.addEventListener('keydown', function(e) {
         <p class="cs-p">What mattered wasn't just the revenue number. It was that the engagement was structured with a clear problem, a defensible business case, and a solution that Hawaiian's leadership could actually execute. That combination, problem clarity plus financial credibility plus operational realism, is what closes enterprise consulting engagements.</p>
       </div>
 
-      <div class="cs-section" id="ha-s8">
+      <div class="cs-section" id="s8">
         <div class="cs-num">08</div>
         <h2 class="cs-heading">What This Taught Me <em>About Product Work</em></h2>
         <div class="learnings">
@@ -878,14 +975,14 @@ document.addEventListener('keydown', function(e) {
     <aside class="toc">
       <div class="toc-label">Contents</div>
       <div class="toc-links">
-        <a href="#ha-s1" class="toc-link" data-section="ha-s1">01, The Problem</a>
-        <a href="#ha-s2" class="toc-link" data-section="ha-s2">02, Context</a>
-        <a href="#ha-s3" class="toc-link" data-section="ha-s3">03, Crew Diagnostic</a>
-        <a href="#ha-s4" class="toc-link" data-section="ha-s4">04, SOCC Workstreams</a>
-        <a href="#ha-s5" class="toc-link" data-section="ha-s5">05, Solution</a>
-        <a href="#ha-s6" class="toc-link" data-section="ha-s6">06, Business Case</a>
-        <a href="#ha-s7" class="toc-link" data-section="ha-s7">07, Outcome</a>
-        <a href="#ha-s8" class="toc-link" data-section="ha-s8">08, Learnings</a>
+        <a href="#s1" class="toc-link" data-section="s1">01, The Problem</a>
+        <a href="#s2" class="toc-link" data-section="s2">02, Context</a>
+        <a href="#s3" class="toc-link" data-section="s3">03, Crew Diagnostic</a>
+        <a href="#s4" class="toc-link" data-section="s4">04, SOCC Workstreams</a>
+        <a href="#s5" class="toc-link" data-section="s5">05, Solution</a>
+        <a href="#s6" class="toc-link" data-section="s6">06, Business Case</a>
+        <a href="#s7" class="toc-link" data-section="s7">07, Outcome</a>
+        <a href="#s8" class="toc-link" data-section="s8">08, Learnings</a>
       </div>
       <div style="margin-top:28px;padding-top:20px;border-top:1px solid var(--border)">
         <a onclick="goBack()" style="font-size:12.5px;color:var(--terracotta);font-weight:600;cursor:pointer">← Back to portfolio</a>
@@ -905,262 +1002,57 @@ document.addEventListener('keydown', function(e) {
       <a href="tradescale.html" style="background:rgba(247,243,238,.08);border:1px solid rgba(247,243,238,.12);color:var(--cream);padding:10px 18px;border-radius:8px;font-size:13px;font-weight:600;transition:all .2s" onmouseover="this.style.background='rgba(181,98,58,.25)'" onmouseout="this.style.background='rgba(247,243,238,.08)'">TradeScale AI →</a>
     </div>
   </div>
-</div></div>
-<div id="lg-panel" class="cs-panel"><div class="panel-topbar"><button class="panel-back" onclick="closePanel('lg-panel')"><svg viewBox="0 0 24 24"><path d="M19 11H7.83l4.88-4.88c.39-.39.39-1.03 0-1.42-.39-.39-1.02-.39-1.41 0l-6.59 6.59c-.39.39-.39 1.02 0 1.41l6.59 6.59c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L7.83 13H19c.55 0 1-.45 1-1s-.45-1-1-1z"/></svg>Back to portfolio</button><span style="font-family:var(--disp);font-size:16px;color:var(--charcoal)">Shagun<span style="color:var(--terracotta)">.</span></span><button class="panel-close" onclick="closePanel('lg-panel')">Close ✕</button></div><!-- NAV -->
-<!-- HERO -->
-<section id="lg-hero">
-  <div class="hero-blob-l"></div>
-  <div class="hero-blob-r"></div>
-  <div class="container hero-inner">
-    <div class="hero-eyebrow">
-      <span class="hero-badge">PM Case Study 001</span>
-      <span class="hero-badge">B2C · Housing Tech / Civic AI</span>
-    </div>
-    <h1 class="hero-title">The 30-Second<br>Building Safety Answer.<br><em>LeaseGuard.</em></h1>
-    <p class="hero-lede">NYC renters spend 3+ hours researching whether a building is safe before signing a lease. I identified the problem, built a voice-enabled AI system that collapses that research to 30 seconds, and documented what it took to get it right.</p>
-    <div class="hero-meta">
-      <div class="hm-item"><span class="hm-label">Domain</span><span class="hm-val">Housing Tech / Civic AI</span></div>
-      <div class="hm-item"><span class="hm-label">Methods</span><span class="hm-val">User Interviews · JTBD · RICE · Architecture Design</span></div>
-      <div class="hm-item"><span class="hm-label">Built in</span><span class="hm-val">48 hours · NYU × Google Developer Group</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTEXT STRIPE -->
-    <div class="ctx-item"><span class="ctx-label">Stack</span><span class="ctx-val">Flask · Gemini API · NYC Open Data (7 APIs) · Web Speech API</span></div>
-    <div class="ctx-item"><span class="ctx-label">Addressable Market</span><span class="ctx-val">2.1M NYC renters · 500K leases / year</span></div>
-    <div class="ctx-item"><span class="ctx-label">Time to Answer</span><span class="ctx-val">30 seconds vs. 3–5 hours</span></div>
-  </div>
 </div>
 
-<!-- MAIN -->
-<div style="padding:72px 0 80px">
-  <div class="page-layout">
-
-    <div>
-
-      <!-- 01 PROBLEM -->
-      <div class="cs-section" id="lg-s1">
-        <div class="cs-num">01</div>
-        <h2 class="cs-heading">The problem no one<br><em>had connected yet.</em></h2>
-        <p class="cs-p">A renter trying to check whether a building is safe before signing a lease has to visit seven different government portals. HPD violations on one site. DOB permits on another. 311 complaints on a third. ACRIS property records somewhere else. Each with its own search interface, its own login, its own data format. No single view. No synthesis. No easy answer.</p>
-        <p class="cs-p">Most renters give up after the second site. They make a gut call based on incomplete information, or they ask a friend who rented nearby. One person I interviewed nearly signed a lease on an apartment with 47 open heat violations. She would have found out in January.</p>
-        <div class="blockquote">
-          <p>"I almost rented a place that had 47 open heat violations. I would have found out in my first winter. But nobody tells you to check this stuff until it's too late."</p>
-          <cite>Renter, Brooklyn, Feb 2026</cite>
-        </div>
-        <p class="cs-p">The government data is public. It has always been public. It is just scattered across seven agencies with no unified interface. The innovation was not the data. It was the integration.</p>
-        <div class="callout">
-          <p><strong>The core insight:</strong> NYC already publishes everything a renter needs to make an informed decision. The problem is access, not data. Build the bridge.</p>
-        </div>
+<footer>
+  <div class="container-wide">
+    <div class="footer-in">
+      <div class="nav-logo" style="font-family:var(--disp);font-size:18px;color:var(--cream)">Shagun<span style="color:var(--terra-lt)">.</span></div>
+      <div class="footer-links">
+        <a href="mailto:ss20051@nyu.edu">Email</a>
+        <a href="https://www.linkedin.com/in/shagun/" target="_blank">LinkedIn</a>
+        <a href="https://github.com/shagunsharma08" target="_blank">GitHub</a>
+        <a href="index.html">Portfolio</a>
       </div>
-
-      <!-- 02 USER -->
-      <div class="cs-section" id="lg-s2">
-        <div class="cs-num">02</div>
-        <h2 class="cs-heading">Two users, one<br><em>broken system.</em></h2>
-        <p class="cs-p">Through interviews with 8 NYC renters and 2 housing advocates, I found two distinct users who each had compelling reasons to want this, and neither had a tool that worked for them.</p>
-        <p class="cs-p"><strong>The renter</strong> is 23–45, about to sign a lease, with 24 hours to decide. Their current workaround is calling friends for anecdotes, skimming three or four low-quality websites, and making a gut call. What they want is simple: "Just tell me if this place is safe while I'm still on the viewing call with my agent."</p>
-        <p class="cs-p"><strong>The housing advocate</strong> works at a tenant rights nonprofit, Met Council on Housing, NYLAG, or similar. They spend 20+ minutes per consultation pulling data from multiple sources on behalf of renters. What they want is a tool they can hand renters for self-service, so they can spend their time on actual advocacy instead of data retrieval.</p>
-        <div class="callout">
-          <p><strong>The difference:</strong> renters want speed, a decision in under 2 minutes. Advocates want scale, reduce repetitive research across hundreds of consultations. Same tool, different JTBD.</p>
-        </div>
-      </div>
-
-      <!-- 03 MARKET -->
-      <div class="cs-section" id="lg-s3">
-        <div class="cs-num">03</div>
-        <h2 class="cs-heading">Why this<br><em>matters at scale.</em></h2>
-        <p class="cs-p">NYC has 2.1 million renters. That is 65% of the city. Around 500,000 new leases are signed every year. Unlike San Francisco, which has Zillow-embedded safety scores, NYC has nothing. Renters resort to anonymous Reddit posts, anecdotal complaints, and luck.</p>
-        <div class="stat-grid">
-          <div class="stat-card"><div class="stat-num">2.1M</div><div class="stat-lbl">NYC renters, 65% of city residents</div></div>
-          <div class="stat-card"><div class="stat-num">500K</div><div class="stat-lbl">New leases signed in NYC every year</div></div>
-          <div class="stat-card"><div class="stat-num">7</div><div class="stat-lbl">Government agencies publishing building data, siloed</div></div>
-          <div class="stat-card"><div class="stat-num">3–5h</div><div class="stat-lbl">Current research time per building, manually</div></div>
-        </div>
-        <p class="cs-p">Year 1 target: 50K–100K users (housing advocates plus informed renters). Year 2: 500K renters actively apartment hunting. Year 3 expansion to SF, LA, Chicago: 5M+ renters nationally, each city with its own equivalent open government APIs.</p>
-        <p class="cs-p">The model scales because the underlying approach, LLM function calling over public APIs, is replicable to any city that publishes building data. The data infrastructure is already there. We just connect it.</p>
-      </div>
-
-      <!-- 04 ARCHITECTURE -->
-      <div class="cs-section" id="lg-s4">
-        <div class="cs-num">04</div>
-        <h2 class="cs-heading">The architecture.<br><em>And the key decision.</em></h2>
-        <p class="cs-p">The system has four layers. A voice and chat frontend built on Web Speech API and SpeechSynthesis. A Flask backend on Google Cloud that coordinates everything. The Gemini API using function calling to query all seven data sources. And NYC Open Data, seven public APIs covering HPD violations, DOB violations, 311 complaints, DOB permits, ACRIS records, fire violations, and health violations.</p>
-        <div class="arch-block">
-          Voice / Chat UI (Web Speech API)<br>
-          <span class="arch-arrow">↓ HTTP POST: user question</span><br>
-          Flask Backend (Google Cloud)<br>
-          <span class="arch-arrow">↓ Question + system prompt</span><br>
-          Gemini API (function calling)<br>
-          <span class="arch-arrow">↓ Queries 7 NYC Open Data APIs in parallel</span><br>
-          HPD · DOB · 311 · Permits · ACRIS · Fire · Health<br>
-          <span class="arch-arrow">↓ Synthesized, grounded answer</span><br>
-          User gets: "350 W 42nd has 14 open HPD violations (3 Class C), 28 unresolved 311 complaints about heat and mold. Risk: HIGH."
-        </div>
-        <p class="cs-p">The key architectural decision was embedding all seven API links inside the Gemini system prompt rather than hardcoding API calls in the Flask backend. This means Gemini reads the prompt, decides which APIs are relevant to the user's question, calls them via function calling, and synthesizes only what it retrieved. It cannot speculate. It cannot hallucinate. If the data does not exist, it says so.</p>
-        <div class="callout">
-          <p><strong>Why this matters for product:</strong> changes to the data layer require editing a prompt, not deploying code. New city? Add its APIs to the prompt. New agency? Same. The integration layer is configuration, not engineering.</p>
-        </div>
-        <p class="cs-p">The frontend uses the browser's built-in Web Speech and SpeechSynthesis APIs. No third-party voice library. A renter can ask a question while standing outside a building on their phone and hear the answer read back in their language. Multilingual support (Spanish, Mandarin, Bengali) is planned for V1.1 and requires only pointing the SpeechSynthesis API to the right locale.</p>
-      </div>
-
-      <!-- 05 BEFORE AFTER -->
-      <div class="cs-section" id="lg-s5">
-        <div class="cs-num">05</div>
-        <h2 class="cs-heading">Before and after.<br><em>In concrete terms.</em></h2>
-        <p class="cs-p"><strong>Before LeaseGuard:</strong> a renter visits data.cityofnewyork.us, searches for HPD violations by address, manually counts them and notes severity, goes back and searches 311 complaints on a different portal, checks DOB violations on a third, tries to compile the findings mentally, Googles the address for anecdotes, and makes a decision, usually with incomplete data and low confidence. Time: 3 to 5 hours. Confidence: low.</p>
-        <p class="cs-p"><strong>After LeaseGuard:</strong> the renter opens the site, asks one question in their own language, and gets an answer synthesized from all seven government sources in 30 seconds. The answer names which APIs were queried. It explains severity. It gives a risk level. It recommends next steps.</p>
-        <div class="two-grid">
-          <div class="tg-card">
-            <div class="tg-title">Before</div>
-            <div class="tg-body">7 portals · 3–5 hours · 1–2 sources checked · manual synthesis · low confidence · no risk framing</div>
-          </div>
-          <div class="tg-card">
-            <div class="tg-title">After</div>
-            <div class="tg-body">1 question · 30 seconds · all 7 sources queried · AI synthesis · sourced answer · explicit risk level</div>
-          </div>
-        </div>
-        <p class="cs-p">Three design principles drove this. Visibility first: the renter always sees exactly which data sources were checked. No black-box AI. Grounded responses only: Gemini cannot speculate, it must call real APIs before answering. And voice-first: a renter should be able to use this tool while standing outside the building on their phone, without typing a single character.</p>
-      </div>
-
-      <!-- 06 PRIORITIZATION -->
-      <div class="cs-section" id="lg-s6">
-        <div class="cs-num">06</div>
-        <h2 class="cs-heading">What we built vs.<br><em>what we deferred.</em></h2>
-        <p class="cs-p">The 48-hour constraint forced a ruthless prioritization decision. I used RICE scoring to make the tradeoffs explicit.</p>
-        <table class="rice-table">
-          <thead>
-            <tr>
-              <th>Feature</th>
-              <th>Why</th>
-              <th>RICE</th>
-              <th>Decision</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Core Q&A engine</strong><br><span style="font-size:12px;color:var(--muted)">Voice → 7 APIs → answer</span></td>
-              <td>Primary value prop. Without this, nothing else matters.</td>
-              <td><span class="rice-score">95</span></td>
-              <td><span style="color:var(--sage);font-weight:600">✓ Built</span></td>
-            </tr>
-            <tr>
-              <td><strong>Onboarding education</strong><br><span style="font-size:12px;color:var(--muted)">What LeaseGuard can/can't do</span></td>
-              <td>Helps activation. Reduces confused queries. Not blocking.</td>
-              <td><span class="rice-score">72</span></td>
-              <td><span style="color:var(--muted);font-weight:600">V1.1</span></td>
-            </tr>
-            <tr>
-              <td><strong>Audit log</strong><br><span style="font-size:12px;color:var(--muted)">Which APIs queried, in what order</span></td>
-              <td>Builds trust with power users and advocates. Not critical on day one.</td>
-              <td><span class="rice-score">55</span></td>
-              <td><span style="color:var(--muted);font-weight:600">Backlog</span></td>
-            </tr>
-          </tbody>
-        </table>
-        <p class="cs-p">The constraint forced a discipline I think about often. We shipped the core thing. We deployed it. We got real feedback in 48 hours. If we had tried to ship the audit log and onboarding too, we would have shipped nothing well.</p>
-      </div>
-
-      <!-- 07 METRICS -->
-      <div class="cs-section" id="lg-s7">
-        <div class="cs-num">07</div>
-        <h2 class="cs-heading">How I'd know<br><em>if this worked.</em></h2>
-        <p class="cs-p">I defined four KPIs before building. Not after. The discipline of writing success metrics before you start building is one of the most useful habits I've developed, it forces you to be honest about what "working" actually means.</p>
-        <div class="metrics-grid">
-          <div class="metric-card">
-            <div class="metric-num">30s</div>
-            <div class="metric-label">Time to answer. Baseline: 3–5 hours of manual research.</div>
-          </div>
-          <div class="metric-card">
-            <div class="metric-num">7/7</div>
-            <div class="metric-label">APIs queried per response. Renters currently check 1–2 of 7 sources.</div>
-          </div>
-          <div class="metric-card">
-            <div class="metric-num">60%</div>
-            <div class="metric-label">First-visit activation target: first visit to first query.</div>
-          </div>
-          <div class="metric-card">
-            <div class="metric-num">85%</div>
-            <div class="metric-label">Post-query helpful rating. "Did this help you make a decision?"</div>
-          </div>
-        </div>
-        <p class="cs-p">The 60% activation target is the one I watch most closely. If fewer than 60% of first-time visitors ask a question, that tells me the onboarding is failing, they don't understand what the tool does or the voice input is not working in context. That is a UX problem, not a data problem.</p>
-      </div>
-
-      <!-- 08 LEARNINGS -->
-      <div class="cs-section" id="lg-s8">
-        <div class="cs-num">08</div>
-        <h2 class="cs-heading">Five things this<br><em>taught me.</em></h2>
-        <div class="learnings">
-          <div class="learning-item">
-            <div class="l-num">1</div>
-            <div class="l-body">
-              <div class="l-title">Grounding is the hardest problem in AI products.</div>
-              <div class="l-text">Without forcing Gemini to call real APIs through the system prompt, it speculates. With it, the output is trustworthy. For consequential decisions, housing, finance, health, the product is only as good as its grounding. Charm without accuracy is a liability.</div>
-            </div>
-          </div>
-          <div class="learning-item">
-            <div class="l-num">2</div>
-            <div class="l-body">
-              <div class="l-title">Government data is an underused product surface.</div>
-              <div class="l-text">NYC publishes everything. The seven agencies, the APIs, the violation histories, the permit records, all public, all queryable, no authentication. The innovation here was integration, not data collection. Before building data infrastructure, check what government already publishes.</div>
-            </div>
-          </div>
-          <div class="learning-item">
-            <div class="l-num">3</div>
-            <div class="l-body">
-              <div class="l-title">Voice is not a nice-to-have for mobile-first products.</div>
-              <div class="l-text">I added voice thinking it was a differentiator. Users told me it was the feature. "I don't want to type an address while standing outside the building." Voice made the product usable in the context where it actually matters. Interface choices are product choices.</div>
-            </div>
-          </div>
-          <div class="learning-item">
-            <div class="l-num">4</div>
-            <div class="l-body">
-              <div class="l-title">Write success metrics before you build, not after.</div>
-              <div class="l-text">Defining the four KPIs before the hackathon started meant every build decision had a clear test. Is this feature helping time-to-answer? Does it improve activation? Without pre-defined metrics, you build features that feel good instead of features that work.</div>
-            </div>
-          </div>
-          <div class="learning-item">
-            <div class="l-num">5</div>
-            <div class="l-body">
-              <div class="l-title">Time constraints are a feature.</div>
-              <div class="l-text">48 hours forced a prioritization discipline that a six-month roadmap never would have. We shipped what mattered, deployed it, and got feedback. The audit log and onboarding can be V1.1. The core thing needed to exist first. Ship, then iterate, in that order.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 09 ROADMAP -->
-      <div class="cs-section" id="lg-s9">
-        <div class="cs-num">09</div>
-        <h2 class="cs-heading"><em>What's next.</em></h2>
-        <p class="cs-p">V1.1 is focused on two things: multilingual support (Spanish, Mandarin, and Bengali, NYC's three largest non-English speaker communities) and a historical comparison feature so renters can track how a building's violation count has changed over time, not just see the current state.</p>
-        <p class="cs-p">The expansion thesis is straightforward. San Francisco, Los Angeles, and Chicago all publish equivalent building safety data through their own open data portals. The Gemini system prompt model means that adding a new city is an editing task, not an engineering sprint. Swap the API links. Update the prompt. Ship.</p>
-        <p class="cs-p">The housing advocate dashboard, aggregate stats across buildings, invite codes for nonprofits, bulk lookup, is the B2B layer that makes this commercially viable. Advocates are the distribution channel. Renters are the users. Building for both unlocks the network effect.</p>
-      </div>
-
     </div>
-
-    <!-- TOC -->
-    <aside class="toc">
-      <div class="toc-label">Contents</div>
-      <div class="toc-links">
-        <a href="#lg-s1" class="toc-link" data-s="lg-s1">01 The problem</a>
-        <a href="#lg-s2" class="toc-link" data-s="lg-s2">02 The users</a>
-        <a href="#lg-s3" class="toc-link" data-s="lg-s3">03 Market</a>
-        <a href="#lg-s4" class="toc-link" data-s="lg-s4">04 Architecture</a>
-        <a href="#lg-s5" class="toc-link" data-s="lg-s5">05 Before / After</a>
-        <a href="#lg-s6" class="toc-link" data-s="lg-s6">06 RICE</a>
-        <a href="#lg-s7" class="toc-link" data-s="lg-s7">07 Metrics</a>
-        <a href="#lg-s8" class="toc-link" data-s="lg-s8">08 Learnings</a>
-        <a href="#lg-s9" class="toc-link" data-s="lg-s9">09 What's next</a>
-      </div>
-      <a href="index.html" class="toc-back">← Back to portfolio</a>
-    </aside>
-
+    <div class="footer-note">Shagun Sharma · Product Management &amp; AI · New York City</div>
   </div>
-</div>
+</footer>
+
+<script>
+window.addEventListener('scroll', function() {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+});
+const sections = document.querySelectorAll('.cs-section[id]');
+const tocLinks = document.querySelectorAll('.toc-link[data-section]');
+const observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      tocLinks.forEach(function(link) {
+        link.classList.remove('active');
+        if (link.dataset.section === entry.target.id) {
+          link.classList.add('active');
+        }
+      });
+    }
+  });
+}, { threshold: 0.3, rootMargin: '-80px 0px -50% 0px' });
+sections.forEach(function(s) { observer.observe(s); });
+</script>
+<script>
+// Smart back navigation: works both inside iframe and standalone
+function goBack() {
+  if (window.parent !== window) {
+    // Inside iframe - tell parent to close overlay
+    window.parent.postMessage('closeOverlay', '*');
+  } else {
+    // Standalone page - go to portfolio
+    window.location.href = 'index.html';
+  }
+}
+</script>
+</body>
+</html>
 
 <!-- NEXT STRIP -->
 <div class="next-title">PM lens applied.</div>
