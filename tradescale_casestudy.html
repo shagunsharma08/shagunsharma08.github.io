@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TradeScale AI · Shagun Sharma</title>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Google+Sans+Display:wght@400;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --cream:#f7f3ee;--cream2:#f0e9df;--cream3:#e8ddd0;--sand:#d4c4b0;
+  --terracotta:#b5623a;--terra-lt:#c97a52;--terra-pale:#f0e0d4;
+  --charcoal:#1e1b18;--charcoal2:#2e2a26;--brown:#5c4a38;
+  --muted:#8a7a6a;--muted2:#a89888;--sage:#6b7c6a;--sage-lt:#d4ddd3;
+  --gold:#c49a3c;--gold-lt:#f5e8c8;
+  --border:rgba(90,70,50,0.12);--card:rgba(255,255,255,0.7);
+  --r:14px;--font:'Google Sans','Segoe UI',system-ui,sans-serif;
+  --disp:'DM Serif Display','Georgia',serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--cream);color:var(--charcoal);line-height:1.6;overflow-x:hidden}
+a{color:var(--terracotta);text-decoration:none}
+a:hover{text-decoration:underline}
+::selection{background:rgba(181,98,58,.18)}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")}
+
+/* ── LAYOUT ── */
+.container{max-width:860px;margin:0 auto;padding:0 28px}
+.container-wide{max-width:1080px;margin:0 auto;padding:0 28px}
+.page-layout{display:grid;grid-template-columns:1fr 196px;gap:52px;align-items:start;max-width:1080px;margin:0 auto;padding:0 28px}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:58px;display:flex;align-items:center;
+  background:rgba(247,243,238,.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:all .3s}
+nav.scrolled{background:rgba(247,243,238,.97);box-shadow:0 2px 20px rgba(90,60,30,.06)}
+.nav-in{display:flex;justify-content:space-between;align-items:center;width:100%}
+.nav-logo{font-family:var(--disp);font-size:18px;color:var(--charcoal)}
+.nav-logo span{color:var(--terracotta)}
+.nav-back{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--muted);font-weight:500;transition:color .2s}
+.nav-back:hover{color:var(--terracotta);text-decoration:none}
+.nav-back svg{width:14px;height:14px;fill:currentColor}
+.nav-tag{font-size:12px;color:var(--muted2);border:1px solid var(--border);padding:4px 10px;border-radius:6px}
+
+/* ── HERO ── */
+#hero{min-height:62vh;display:flex;align-items:flex-end;padding:96px 0 60px;position:relative;overflow:hidden;background:var(--charcoal)}
+.hero-blob-l{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(107,124,106,.2) 0%,transparent 70%);top:-80px;left:-100px;filter:blur(70px)}
+.hero-blob-r{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(181,98,58,.14) 0%,transparent 70%);bottom:-60px;right:-60px;filter:blur(70px)}
+.hero-inner{position:relative;z-index:1;width:100%;text-align:left;max-width:860px}
+.hero-eyebrow{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(247,243,238,.08);border:1px solid rgba(247,243,238,.15);color:rgba(247,243,238,.65);padding:4px 12px;border-radius:99px;font-size:11.5px;font-weight:500;letter-spacing:.04em}
+.hero-title{font-family:var(--disp);font-size:clamp(30px,5vw,54px);color:var(--cream);line-height:1.08;letter-spacing:-.02em;margin-bottom:14px;font-weight:400;text-align:left}
+.hero-title em{font-style:italic;color:#a8c5a0}
+.hero-lede{font-size:16px;color:rgba(247,243,238,.55);max-width:660px;line-height:1.8;margin-bottom:32px}
+.hero-meta{display:flex;gap:32px;flex-wrap:wrap;padding-top:22px;border-top:1px solid rgba(247,243,238,.08)}
+.hm-item .hm-label{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(247,243,238,.3);display:block;margin-bottom:3px}
+.hm-item .hm-val{font-size:13px;color:rgba(247,243,238,.75);font-weight:500}
+
+/* ── CONTEXT STRIPE ── */
+.ctx-stripe{background:var(--sage-lt);border-top:1px solid rgba(107,124,106,.2);border-bottom:1px solid rgba(107,124,106,.2);padding:18px 0}
+.ctx-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;align-items:start}
+.ctx-item .ctx-label{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--sage);display:block;margin-bottom:4px}
+.ctx-item .ctx-val{font-size:13px;color:var(--brown);font-weight:500;line-height:1.4}
+
+/* ── CONTENT ── */
+.cs-num{font-family:var(--disp);font-size:13.5px;color:var(--terracotta);margin-bottom:4px;font-style:italic}
+.cs-heading{font-family:var(--disp);font-size:clamp(21px,3vw,30px);color:var(--charcoal);line-height:1.15;margin-bottom:16px;font-weight:400}
+.cs-heading em{font-style:italic;color:var(--terracotta)}
+.cs-p{font-size:15px;color:var(--brown);line-height:1.85;margin-bottom:14px}
+.cs-p:last-child{margin-bottom:0}
+.cs-p strong{color:var(--charcoal);font-weight:600}
+.cs-section{margin-bottom:60px;padding-bottom:60px;border-bottom:1px solid var(--border)}
+.cs-section:last-child{border-bottom:none}
+
+/* ── CALLOUT ── */
+.callout{background:var(--terra-pale);border-left:3px solid var(--terracotta);border-radius:0 10px 10px 0;padding:16px 20px;margin:20px 0}
+.callout p{font-size:14px;color:var(--brown);line-height:1.75;margin:0}
+.callout p strong{color:var(--charcoal)}
+
+/* ── QUOTE ── */
+.blockquote{border-left:3px solid var(--sand);padding:14px 20px;margin:22px 0;background:var(--cream2);border-radius:0 8px 8px 0}
+.blockquote p{font-size:14.5px;color:var(--brown);line-height:1.8;font-style:italic;margin:0}
+.blockquote cite{display:block;margin-top:8px;font-size:12px;color:var(--muted);font-style:normal;font-weight:500}
+
+/* ── STAT GRID ── */
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;margin:20px 0}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:18px;text-align:center;backdrop-filter:blur(8px)}
+.stat-num{font-family:var(--disp);font-size:30px;color:var(--terracotta);line-height:1;font-weight:400}
+.stat-lbl{font-size:11.5px;color:var(--muted);margin-top:5px;line-height:1.45}
+
+/* ── TWO GRID ── */
+.two-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+.tg-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px 18px;backdrop-filter:blur(8px)}
+.tg-title{font-size:13px;font-weight:700;color:var(--charcoal);margin-bottom:5px}
+.tg-body{font-size:12.5px;color:var(--muted);line-height:1.6}
+
+/* ── ARCH DIAGRAM ── */
+.arch-block{background:var(--cream2);border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin:18px 0;font-family:monospace;font-size:12.5px;color:var(--brown);line-height:1.9}
+.arch-arrow{color:var(--terracotta);font-weight:700}
+
+/* ── METRIC CARDS ── */
+.metrics-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0}
+.metric-card{background:var(--sage-lt);border:1px solid rgba(107,124,106,.2);border-radius:10px;padding:16px}
+.metric-num{font-family:var(--disp);font-size:26px;color:var(--sage);line-height:1;font-weight:400}
+.metric-label{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.5}
+
+/* ── LEARNING ITEMS ── */
+.learnings{display:flex;flex-direction:column;gap:22px;margin-top:16px}
+.learning-item{display:flex;gap:16px;align-items:flex-start}
+.l-num{width:26px;height:26px;border-radius:50%;background:var(--terra-pale);border:1px solid rgba(181,98,58,.25);display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:700;color:var(--terracotta);flex-shrink:0;margin-top:3px}
+.l-title{font-size:14.5px;font-weight:700;color:var(--charcoal);margin-bottom:4px}
+.l-text{font-size:13.5px;color:var(--brown);line-height:1.75}
+
+/* ── RICE TABLE ── */
+.rice-table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13px}
+.rice-table th{text-align:left;padding:10px 14px;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:var(--cream2);border-bottom:1px solid var(--border)}
+.rice-table td{padding:11px 14px;color:var(--brown);border-bottom:1px solid var(--border2);vertical-align:top;line-height:1.5}
+.rice-table tr:hover td{background:rgba(255,255,255,.5)}
+.rice-score{font-weight:700;color:var(--terracotta);font-family:var(--disp);font-size:16px}
+
+/* ── TOC ── */
+.toc{position:sticky;top:80px}
+.toc-label{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted2);margin-bottom:12px}
+.toc-links{display:flex;flex-direction:column;gap:5px}
+.toc-link{font-size:12px;color:var(--muted);transition:all .2s;padding:3px 0 3px 10px;border-left:2px solid transparent}
+.toc-link:hover{color:var(--terracotta);border-left-color:var(--terracotta);text-decoration:none}
+.toc-link.active{color:var(--terracotta);border-left-color:var(--terracotta);font-weight:500}
+.toc-back{display:block;margin-top:24px;padding-top:18px;border-top:1px solid var(--border);font-size:12px;color:var(--terracotta);font-weight:600}
+
+/* ── NEXT STRIP ── */
+.next-strip{background:var(--charcoal);padding:48px 0}
+.next-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.next-label{font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(247,243,238,.3);margin-bottom:6px}
+.next-title{font-family:var(--disp);font-size:20px;color:var(--cream);font-weight:400}
+.next-title em{font-style:italic;color:#a8c5a0}
+.next-links{display:flex;gap:10px;flex-wrap:wrap}
+.next-btn{background:rgba(247,243,238,.07);border:1px solid rgba(247,243,238,.12);color:var(--cream);padding:9px 16px;border-radius:8px;font-size:13px;font-weight:600;transition:all .2s;display:inline-block}
+.next-btn:hover{background:rgba(181,98,58,.28);border-color:transparent;text-decoration:none;color:var(--cream)}
+
+/* ── FOOTER ── */
+footer{background:var(--charcoal);padding:28px 0;border-top:1px solid rgba(255,255,255,.06)}
+.footer-in{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+.footer-logo{font-family:var(--disp);font-size:17px;color:var(--cream)}
+.footer-links{display:flex;gap:18px}
+.footer-links a{font-size:13px;color:rgba(247,243,238,.45);transition:color .2s}
+.footer-links a:hover{color:#a8c5a0;text-decoration:none}
+.footer-note{font-size:11.5px;color:rgba(247,243,238,.25);text-align:center;margin-top:10px}
+
+/* ── RESP ── */
+@media(max-width:780px){
+  .page-layout{grid-template-columns:1fr}
+  .toc{display:none}
+  .two-grid,.metrics-grid{grid-template-columns:1fr}
+  .next-inner{flex-direction:column;align-items:flex-start}
+  .footer-in{flex-direction:column;text-align:center}
+}
+
+
+/* ── TRADESCALE EXTRA ── */
+.callout.gold-call {background:var(--gold-lt);border-left-color:var(--gold)}
+.two-grid {display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+.three-grid {display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
+.persona-card {background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:20px;backdrop-filter:blur(8px)}
+.persona-name {font-family:var(--disp);font-size:16px;color:var(--charcoal);margin-bottom:4px;font-weight:400}
+.persona-role {font-size:12px;color:var(--terracotta);font-weight:600;margin-bottom:12px}
+.persona-row {display:flex;gap:8px;margin-bottom:7px;align-items:flex-start}
+.persona-label {font-size:10.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;min-width:52px;flex-shrink:0;margin-top:1px}
+.persona-val {font-size:13px;color:var(--brown);line-height:1.5}
+.move-card {background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:22px;margin-bottom:16px;backdrop-filter:blur(8px)}
+.move-num {font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--terracotta);margin-bottom:6px}
+.move-title {font-size:16px;font-weight:700;color:var(--charcoal);margin-bottom:8px}
+.move-body {font-size:13.5px;color:var(--brown);line-height:1.7}
+.move-moat {font-size:12px;color:var(--gold);font-weight:600;margin-top:10px;padding:6px 10px;background:var(--gold-lt);border-radius:6px;display:inline-block}
+.market-table {width:100%;border-collapse:collapse;margin:18px 0;font-size:13px}
+.market-table th {text-align:left;padding:10px 14px;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:var(--cream2);border-bottom:1px solid var(--border)}
+.market-table td {padding:11px 14px;color:var(--brown);border-bottom:1px solid rgba(90,70,50,.07);vertical-align:top}
+.market-table tr:hover td {background:rgba(255,255,255,.5)}
+.market-strong {font-weight:700;color:var(--charcoal)}
+.rice-table {width:100%;border-collapse:collapse;margin:18px 0;font-size:13px}
+.rice-table th {text-align:left;padding:10px 14px;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:var(--cream2);border-bottom:1px solid var(--border)}
+.rice-table td {padding:11px 14px;color:var(--brown);border-bottom:1px solid rgba(90,70,50,.07);vertical-align:top;line-height:1.5}
+.metrics-grid {display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0}
+.fin-grid {display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+.fin-card {background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px;backdrop-filter:blur(8px)}
+.fin-num {font-family:var(--disp);font-size:28px;color:var(--terracotta);line-height:1;font-weight:400}
+.fin-label {font-size:12px;color:var(--muted);margin-top:4px}
+.fin-sub {font-size:11px;color:var(--muted2);margin-top:3px}
+.learning-item {display:flex;gap:16px;align-items:flex-start}
+.l-num {width:26px;height:26px;border-radius:50%;background:var(--terra-pale);border:1px solid rgba(181,98,58,.25);display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:700;color:var(--terracotta);flex-shrink:0;margin-top:3px}
+.l-title {font-size:14.5px;font-weight:700;color:var(--charcoal);margin-bottom:4px}
+.l-text {font-size:13.5px;color:var(--brown);line-height:1.75}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="container-wide nav-in">
+    <a href="index.html" onclick="return goBack(event);" class="nav-back" style="cursor:pointer">
+      <svg viewBox="0 0 24 24"><path d="M19 11H7.83l4.88-4.88c.39-.39.39-1.03 0-1.42-.39-.39-1.02-.39-1.41 0l-6.59 6.59c-.39.39-.39 1.02 0 1.41l6.59 6.59c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L7.83 13H19c.55 0 1-.45 1-1s-.45-1-1-1z"/></svg>
+      Back to portfolio
+    </a>
+    <div class="nav-logo">Shagun<span>.</span></div>
+    <span class="nav-tag">PM Case Study 002</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-blob-l"></div>
+  <div class="hero-blob-r"></div>
+  <div class="container hero-inner">
+    <div class="hero-eyebrow">
+      <span class="hero-badge">PM Case Study 002</span>
+      <span class="hero-badge">B2B SaaS · Future of Work / Ed-Tech</span>
+    </div>
+    <h1 class="hero-title">The Credentialing Crisis<br>in Skilled Trades.<br><em>TradeScale AI.</em></h1>
+    <p class="hero-lede">140,000 apprentices advance based on time served, not skill demonstrated. This documents the market sizing, user research, competitive analysis, and business model behind an AI-native fix.</p>
+    <p class="hero-lede" style="font-size:14px;margin-top:-18px;margin-bottom:26px;color:rgba(247,243,238,.72)"><strong style="color:var(--cream);font-weight:600">Prototype link:</strong> <a href="https://trade-skill-master.lovable.app/" target="_blank" rel="noopener" style="color:var(--terra-lt);font-weight:600">https://trade-skill-master.lovable.app/</a></p>
+    <div class="hero-meta">
+      <div class="hm-item"><span class="hm-label">Domain</span><span class="hm-val">B2B SaaS + Ed-Tech</span></div>
+      <div class="hm-item"><span class="hm-label">Methods</span><span class="hm-val">Market Sizing · Primary Research · Competitive Analysis</span></div>
+      <div class="hm-item"><span class="hm-label">Scope</span><span class="hm-val">Strategy + Business Model</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTEXT STRIPE -->
+<div class="ctx-stripe">
+  <div class="container-wide ctx-inner">
+    <div class="ctx-item"><span class="ctx-label">Market Size</span><span class="ctx-val">$15B trade credentialing market</span></div>
+    <div class="ctx-item"><span class="ctx-label">Beachhead</span><span class="ctx-val">14,000 electrical apprentices · TX + AZ</span></div>
+    <div class="ctx-item"><span class="ctx-label">Revenue Y1</span><span class="ctx-val">$1.52M projected (1K workers + 10 employers)</span></div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div style="padding:72px 0 80px">
+  <div class="page-layout">
+    <div>
+
+      <div class="cs-section" id="s1">
+        <div class="cs-num">01</div>
+        <h2 class="cs-heading">The hours-based system<br><em>doesn't measure skill.</em></h2>
+        <p class="cs-p">Every skilled trade in America advances the same way: you log 8,000 hours over 4 years. Become an electrician, plumber, HVAC technician, same rule everywhere. Time equals certification. Except time doesn't measure skill.</p>
+        <p class="cs-p">When I spent several months researching the apprenticeship system, I interviewed hiring managers at Honeywell and Citi, and collected 30+ responses from trade workers on Reddit across four subreddits. The pattern was unmistakable: employers retrain every hire regardless of certification, because certifications don't prove day-one readiness.</p>
+        <div class="blockquote">
+          <p>"Hours worked have nothing to do with it. I have over 70,000 hours as an electrician and I learn new skills constantly."</p>
+          <cite>u/Available_Alarm_8878, 30-year electrician, r/electricians</cite>
+        </div>
+        <p class="cs-p">Three structural problems make this worse than it needs to be.</p>
+        <div class="two-grid">
+          <div class="tg-card"><div class="tg-title">Hours-Based Progression</div><div class="tg-body">You advance when the calendar says so, not when you're ready. A worker can wire 200 electrical panels perfectly but must wait 9 more months because that's how many hours are left in Year 2. The system punishes fast learners.</div></div>
+          <div class="tg-card"><div class="tg-title">Instructor Bottleneck</div><div class="tg-body">Training is gated by human availability. 100 apprentices want to train. 10 journeymen exist. 90 wait. Supply can't scale to demand. But AI can.</div></div>
+          <div class="tg-card"><div class="tg-title">Geographic Fragmentation</div><div class="tg-body">Your license is tied to one state. Move to another, start over. You're either "certified" or "not" — no recognition of depth. A worker might be 90% job-ready but the system sees them as unqualified.</div></div>
+          <div class="tg-card"><div class="tg-title">Employer Mismatch</div><div class="tg-body">"Employers retrain every hire regardless of certifications. Credentials signal completion, not capability." — Eric Oh, Engineering Director, Honeywell. The system produces paper, not proof.</div></div>
+        </div>
+        <div class="callout">
+          <p><strong>The core insight:</strong> 140,000 non-union apprentices are locked into a system that doesn't measure their actual ability. Replace hours with AI-driven skill assessment and you unlock portability, faster advancement, and employer confidence.</p>
+        </div>
+      </div>
+
+      <div class="cs-section" id="s2">
+        <div class="cs-num">02</div>
+        <h2 class="cs-heading">Three markets,<br><em>one beachhead.</em></h2>
+        <p class="cs-p">The trade credentialing market is $15 billion. But not all of it is addressable with a new model. I mapped the market in three layers.</p>
+        <table class="market-table">
+          <thead>
+            <tr><th>Layer</th><th>Definition</th><th>Size</th><th>Market Value</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="market-strong">TAM</span></td><td>Entire U.S. trade training market</td><td>Unlimited</td><td><span class="market-strong">$15B</span></td></tr>
+            <tr><td><span class="market-strong">SAM</span></td><td>Non-union apprentices (not union-locked)</td><td>140,000</td><td><span class="market-strong">$210M</span></td></tr>
+            <tr><td><span class="market-strong">Beachhead</span></td><td>TX/AZ electrical apprentices, Year 1-3</td><td>14,000</td><td><span class="market-strong">$21M</span></td></tr>
+          </tbody>
+        </table>
+        <p class="cs-p">Why Texas and Arizona? During Reddit research, one electrician said: "If you screw up, you burn it down or kill someone." That quote changed the entire strategy. Workers defend hours-based progression because of safety — we can't fight that directly with unions.</p>
+        <p class="cs-p">Instead, we target right-to-work states where unions have less control, workers have more freedom to choose, and the market is massive. We prove the model before approaching union locals. That one piece of research data cascaded into a fundamental strategic pivot.</p>
+        <div class="callout gold-call">
+          <p><strong>Market sizing isn't a prediction.</strong> TAM ($15B) is context. SAM ($210M) is addressable. SOM ($21M) is the chosen beachhead. Each level changed how we positioned. "$21M beachhead with a clear path to $210M" is a fundable thesis. "$15B TAM" is noise.</p>
+        </div>
+      </div>
+
+      <div class="cs-section" id="s3">
+        <div class="cs-num">03</div>
+        <h2 class="cs-heading">Three users,<br><em>one broken system.</em></h2>
+        <p class="cs-p">TradeScale serves three distinct personas. Most products forget personas 2 and 3 exist.</p>
+        <div class="three-grid">
+          <div class="persona-card">
+            <div class="persona-name">Carlos M.</div>
+            <div class="persona-role">The Worker · Year 2 Electrical Apprentice · Texas</div>
+            <div class="persona-row"><span class="persona-label">Problem</span><span class="persona-val">Has wired 200 panels in 8 months. Boss says he's great. System says wait 9 more months.</span></div>
+            <div class="persona-row"><span class="persona-label">JTBD</span><span class="persona-val">Advance based on skill, not time. Earn a credential employers actually trust.</span></div>
+          </div>
+          <div class="persona-card">
+            <div class="persona-name">Lone Star Electric</div>
+            <div class="persona-role">The Employer · Contractor · Houston</div>
+            <div class="persona-row"><span class="persona-label">Problem</span><span class="persona-val">Gets 50 resumes, hires 3, retrains 1 after 2 weeks. Cost: $10K-$15K in wasted time.</span></div>
+            <div class="persona-row"><span class="persona-label">JTBD</span><span class="persona-val">Know if someone is truly job-ready on Day 1. No trial periods. No retraining.</span></div>
+          </div>
+          <div class="persona-card">
+            <div class="persona-name">NCCER</div>
+            <div class="persona-role">The Incumbent · Credentialing Body</div>
+            <div class="persona-row"><span class="persona-label">Problem</span><span class="persona-val">Trapped by their own model. They own training centers that require seat time (hours).</span></div>
+            <div class="persona-row"><span class="persona-label">JTBD</span><span class="persona-val">Maintain authority and margin. Cannot adopt skill-based assessment without destroying themselves.</span></div>
+          </div>
+        </div>
+        <div class="callout">
+          <p><strong>The incumbent trap:</strong> NCCER can't adopt skill-based assessment without destroying their training-center revenue. This isn't just market power — it's structural lock-in. We find what they can't do because their business model forbids it, and build there.</p>
+        </div>
+      </div>
+
+      <div class="cs-section" id="s4">
+        <div class="cs-num">04</div>
+        <h2 class="cs-heading">Three moves that<br><em>lock the system.</em></h2>
+        <p class="cs-p">TradeScale works through three connected moves. Each solves a user problem. Together they create a defensible competitive moat using Hamilton Helmer's 7 Powers framework.</p>
+        <div class="move-card">
+          <div class="move-num">Move 1</div>
+          <div class="move-title">Remove the Instructor Bottleneck</div>
+          <div class="move-body">AI assessment evaluates decision-making without requiring a journeyman present. Worker takes 3 real-world electrical scenarios (main breaker off — what next?). AI scores safety, code, speed in real-time. Takes 5 minutes. No instructor needed. Training scales to demand, not headcount.</div>
+          <span class="move-moat">7 Powers moat: Counter-positioning vs. NCCER (they can't abandon instructor-based training)</span>
+        </div>
+        <div class="move-card">
+          <div class="move-num">Move 2</div>
+          <div class="move-title">Replace Hours with Proof</div>
+          <div class="move-body">Progression triggered by demonstrated mastery, not time served. Worker sees skill map: Panel Wiring 87% verified, Conduit Bending 72% in progress. Path auto-updates. Advance when each skill hits mastery threshold. Every assessment makes the AI smarter.</div>
+          <span class="move-moat">7 Powers moat: Switching costs (workers own verified skill records, won't switch)</span>
+        </div>
+        <div class="move-card">
+          <div class="move-num">Move 3</div>
+          <div class="move-title">Make Credentials Portable and Employer-Facing</div>
+          <div class="move-body">Workers own a verified credential readable by any employer across any state. Employer dashboard shows job-ready confidence score. Carlos shares a link with a Houston contractor. Contractor sees "Carlos M. — 84% job-ready." Clicks hire in ATS modal. No interview needed.</div>
+          <span class="move-moat">7 Powers moat: Network effects (more workers → more employers → more workers)</span>
+        </div>
+      </div>
+
+      <div class="cs-section" id="s5">
+        <div class="cs-num">05</div>
+        <h2 class="cs-heading">Two-sided marketplace<br><em>economics.</em></h2>
+        <p class="cs-p">TradeScale serves two customer types, each paying for different value.</p>
+        <div class="two-grid">
+          <div class="fin-card">
+            <div class="fin-num">$1,500</div>
+            <div class="fin-label">Worker · per year ($125/month)</div>
+            <div class="fin-sub">AI assessment, personalized training, portable credential, advance in 2-3 years vs. 4</div>
+          </div>
+          <div class="fin-card">
+            <div class="fin-num">$2,400</div>
+            <div class="fin-label">Employer · per seat per year</div>
+            <div class="fin-sub">Dashboard of verified workers, job-ready confidence scores, no trial period hiring, $10K+ savings per bad hire avoided</div>
+          </div>
+        </div>
+        <p class="cs-p"><strong>Year 1 financial model</strong> (1,000 workers + 10 employers):</p>
+        <table class="market-table">
+          <thead><tr><th>Source</th><th>Volume</th><th>Price</th><th>Revenue</th></tr></thead>
+          <tbody>
+            <tr><td>Workers</td><td>1,000</td><td>$1,500/year</td><td><span class="market-strong">$1,500,000</span></td></tr>
+            <tr><td>Employers</td><td>10</td><td>$2,400/year</td><td><span class="market-strong">$24,000</span></td></tr>
+            <tr><td colspan="3"><span class="market-strong">Total Revenue</span></td><td><span class="market-strong">$1,524,000</span></td></tr>
+          </tbody>
+        </table>
+        <div class="two-grid">
+          <div class="fin-card">
+            <div class="fin-num" style="color:var(--gold)">$999K</div>
+            <div class="fin-label">Gross Profit Year 1</div>
+            <div class="fin-sub">Revenue minus $525K in direct costs (AI compute, engineering, GTM, SMEs)</div>
+          </div>
+          <div class="fin-card">
+            <div class="fin-num" style="color:var(--sage)">65%</div>
+            <div class="fin-label">Gross Margin</div>
+            <div class="fin-sub">High-margin SaaS unit economics from day one</div>
+          </div>
+        </div>
+        <div class="callout gold-call">
+          <p><strong>Two-sided sequencing:</strong> Launch workers first (Reddit, direct outreach), build the worker base, then approach employers with proof of supply. If no workers exist, employers have no reason to join. Pick which side to launch first carefully — it determines which chicken-and-egg constraint you solve first.</p>
+        </div>
+      </div>
+
+      <div class="cs-section" id="s6">
+        <div class="cs-num">06</div>
+        <h2 class="cs-heading">What to build first:<br><em>RICE framework.</em></h2>
+        <p class="cs-p">With limited engineering resources, RICE scoring made the prioritization explicit.</p>
+        <table class="rice-table">
+          <thead>
+            <tr><th>Feature</th><th>Why</th><th>RICE</th><th>Decision</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>AI Assessment Engine</strong><br><span style="font-size:12px;color:var(--muted)">3-decision diagnostic for core trades</span></td>
+              <td>Core value prop. Workers can't advance without this. Builds trust.</td>
+              <td><span class="rice-score">270</span></td>
+              <td><span style="color:var(--sage);font-weight:600">✓ First</span></td>
+            </tr>
+            <tr>
+              <td><strong>Employer Dashboard</strong><br><span style="font-size:12px;color:var(--muted)">Search workers by skill, job-ready score</span></td>
+              <td>Drives network effects. Employers hire verified workers, workers join.</td>
+              <td><span class="rice-score">255</span></td>
+              <td><span style="color:var(--sage);font-weight:600">✓ Second</span></td>
+            </tr>
+            <tr>
+              <td><strong>Personalized Training Paths</strong><br><span style="font-size:12px;color:var(--muted)">AI-generated training sequences</span></td>
+              <td>Increases LTV. Assessment + dashboard work without this, but training keeps users engaged.</td>
+              <td><span class="rice-score">233</span></td>
+              <td><span style="color:var(--muted);font-weight:600">Phase 2</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="cs-section" id="s7">
+        <div class="cs-num">07</div>
+        <h2 class="cs-heading">How I'd know<br><em>if this worked.</em></h2>
+        <p class="cs-p">Four metrics tied directly to business outcomes, not vanity numbers.</p>
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <div class="metric-num">↓40%</div>
+            <div class="metric-label">Support ticket reduction in 60 days. Workers understand system → fewer questions. Baseline: 8-12 config issues/month.</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-num">↑25%</div>
+            <div class="metric-label">Activation rate in 30-day cohort. Workers complete first assessment. Target: 80% vs. 55% baseline.</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-num">↑15%</div>
+            <div class="metric-label">NRR (Net Revenue Retention). Employers expand seats. NRR above 100% means growing from existing customers.</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-num">↓3 days</div>
+            <div class="metric-label">Time to first hire for employers. Baseline: 5-7 days. Target: 2-4 days. Faster ROI = more renewals.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-section" id="s8">
+        <div class="cs-num">08</div>
+        <h2 class="cs-heading">Four things this<br><em>taught me.</em></h2>
+        <div class="learnings">
+          <div class="learning-item">
+            <div class="l-num">1</div>
+            <div class="l-body">
+              <div class="l-title">Incumbent lock-in is structural, not just market power.</div>
+              <div class="l-text">NCCER can't adopt skill-based assessment without destroying their training-center revenue. That's a more durable moat than technology lock-in. Don't attack incumbents directly. Find what they can't do because their business model forbids it.</div>
+            </div>
+          </div>
+          <div class="learning-item">
+            <div class="l-num">2</div>
+            <div class="l-body">
+              <div class="l-title">Primary research changes strategy, not just messaging.</div>
+              <div class="l-text">Before conducting the Reddit research, the initial plan was to approach unions immediately. One quote — "If you screw up you burn it down or kill someone" — completely changed the strategy. Workers defend hours because of safety. We avoided unions entirely in the beachhead. Real customer conversations should inform strategy, not just validate it.</div>
+            </div>
+          </div>
+          <div class="learning-item">
+            <div class="l-num">3</div>
+            <div class="l-body">
+              <div class="l-title">Two-sided marketplaces require sequencing.</div>
+              <div class="l-text">Workers first, then employers. If no employers exist, workers have no incentive to get verified. If no workers exist, employers have no reason to join. Pick which side to launch first carefully — it determines which chicken-and-egg constraint you solve first.</div>
+            </div>
+          </div>
+          <div class="learning-item">
+            <div class="l-num">4</div>
+            <div class="l-body">
+              <div class="l-title">Market sizing is a map, not a prediction.</div>
+              <div class="l-text">TAM is context. SAM is addressable. SOM is the chosen beachhead. Each level mattered because it changed how we positioned. "$210M → $21M shows a clear beachhead thesis and path to scale." Market sizing makes constraints visible and strategy legible.</div>
+            </div>
+          </div>
+        </div></div>
+
+    </div>
+    <aside class="toc">
+      <div class="toc-label">Contents</div>
+      <div class="toc-links">
+        <a href="#s1" class="toc-link" data-s="s1">01 The problem</a>
+        <a href="#s2" class="toc-link" data-s="s2">02 Market</a>
+        <a href="#s3" class="toc-link" data-s="s3">03 Users</a>
+        <a href="#s4" class="toc-link" data-s="s4">04 Solution</a>
+        <a href="#s5" class="toc-link" data-s="s5">05 Business model</a>
+        <a href="#s6" class="toc-link" data-s="s6">06 RICE</a>
+        <a href="#s7" class="toc-link" data-s="s7">07 Metrics</a>
+        <a href="#s8" class="toc-link" data-s="s8">08 Learnings</a>
+      </div>
+      <a href="index.html" onclick="return goBack(event);" class="toc-back">← Back to portfolio</a>
+    </aside>
+
+  </div>
+</div>
+
+<!-- NEXT STRIP -->
+<div class="next-strip">
+  <div class="container-wide next-inner">
+    <div>
+      <div class="next-label">More case studies</div>
+      <div class="next-title">PM lens applied.</div>
+    </div>
+    <div class="next-links">
+      <a href="hawaiian_airlines_casestudy.html" class="next-btn">Hawaiian Airlines →</a>
+      <a href="leaseguard_casestudy.html" class="next-btn">LeaseGuard →</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container-wide">
+    <div class="footer-in">
+      <div class="footer-logo">Shagun<span style="color:#a8c5a0">.</span></div>
+      <div class="footer-links">
+        <a href="mailto:ss20051@nyu.edu">Email</a>
+        <a href="https://www.linkedin.com/in/shagun/" target="_blank">LinkedIn</a>
+        <a href="https://github.com/shagunsharma08" target="_blank">GitHub</a>
+        <a href="index.html" onclick="return goBack(event);">Portfolio</a>
+      </div>
+    </div>
+    <div class="footer-note">Shagun Sharma · Product Management + AI · New York City</div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', function() {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+const sections = document.querySelectorAll('.cs-section[id]');
+const links = document.querySelectorAll('.toc-link[data-s]');
+const obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) {
+      links.forEach(function(l) {
+        l.classList.toggle('active', l.dataset.s === e.target.id);
+      });
+    }
+  });
+}, { threshold: 0.25, rootMargin: '-80px 0px -45% 0px' });
+sections.forEach(function(s) { obs.observe(s); });
+</script>
+<script>
+function goBack(e) {
+  if (e && e.preventDefault) e.preventDefault();
+  window.top.location.href = 'index.html';
+  return false;
+}
+
+document.querySelectorAll('a[href="index.html"]').forEach(function(link) {
+  link.addEventListener('click', goBack);
+});</script>
+
+</body>
+</html>
