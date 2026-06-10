@@ -621,8 +621,8 @@ function openHAPanel() {
   var overlay = document.getElementById('ha-overlay');
   var iframe  = document.getElementById('ha-iframe');
   if (!iframe.src || iframe.src === window.location.href) {
-    // This encodes the space safely as %20 to match "hawaiian_airlines FINAL.html"
-    iframe.src = 'hawaiian_airlines%20FINAL.html'; 
+    // Notice the underscore here:
+    iframe.src = 'hawaiian_airlines_FINAL.html'; 
   }
   overlay.classList.add('open');
   document.body.style.overflow = 'hidden';
